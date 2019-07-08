@@ -6,8 +6,8 @@ require 'strscan'
 
 def process_char(sc)
   # read { 'a', {
-  sc.scan(/\s+\{\s*\'(.)\',\s*\{/) or return nil
-  char = sc[1]
+  sc.scan(/\s+\{\s*\'(.|\\\'|\\\\)\',\s*\{/) or return nil
+  char = sc[1].chars.last # call .chars.last for \' and \\
 
   content = []
   while sc.scan(/\s*\"(.+)\",?/)
