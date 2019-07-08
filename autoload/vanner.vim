@@ -18,6 +18,10 @@ function! vanner#string(string, option) abort
   while i < max
     for ch in data
       let res .= ch[i]
+
+      if i != max - 1
+        let res .= '  '
+      end
     endfor
     let res .= "\n"
     let i += 1
